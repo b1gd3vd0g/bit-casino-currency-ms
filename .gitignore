@@ -1,0 +1,4 @@
+/.sqlx/
+/migrations/
+/target/
+/.env*
