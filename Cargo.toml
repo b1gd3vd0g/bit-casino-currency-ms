@@ -1,0 +1,16 @@
+[package]
+name = "currency-ms"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.4"
+bigdecimal = "0.4.8"
+chrono = { version = "0.4.41", features = ["serde"] }
+dotenv = "0.15.0"
+reqwest = { version = "0.12.22", features = ["rustls-tls", "json"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.141"
+sqlx = { version = "0.8.6", features = ["bigdecimal", "chrono", "macros", "postgres", "runtime-tokio", "uuid"] }
+tokio = { version = "1.47.0", features = ["full"] }
+uuid = { version = "1.17.0", features = ["serde", "v4"] }
