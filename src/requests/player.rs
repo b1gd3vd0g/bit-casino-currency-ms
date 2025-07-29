@@ -21,7 +21,7 @@ pub async fn authenticate_player_token(token: String) -> Result<Uuid, MessageRes
     hm.insert("Authorization", hv.parse().unwrap());
 
     let response = client
-        .get("http://localhost:3000/authn")
+        .get("http://player-ms:3000/authn")
         .headers(hm)
         .send()
         .await;
