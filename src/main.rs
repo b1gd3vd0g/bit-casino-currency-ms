@@ -12,6 +12,7 @@ use crate::{db::connect, router::router};
 
 #[tokio::main]
 async fn main() {
+    dotenv::from_filename(".env.docker").ok();
     let pool = connect().await;
     let app: Router = router().with_state(pool);
 
