@@ -1,11 +1,11 @@
 [package]
-name = "currency-ms"
+name = "bit-casino-currency-ms"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 axum = "0.8.4"
-bigdecimal = "0.4.8"
+bigdecimal = { version = "0.4.8", features = ["serde"] }
 chrono = { version = "0.4.41", features = ["serde"] }
 dotenv = "0.15.0"
 reqwest = { version = "0.12.22", features = ["rustls-tls", "json"] }
