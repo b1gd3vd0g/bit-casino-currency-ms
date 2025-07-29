@@ -1,0 +1,29 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n        UPDATE bit_wallets \n        SET balance = $1 \n        WHERE player_id = $2\n        RETURNING *\n        ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "player_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "balance",
+        "type_info": "Numeric"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Numeric",
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "49aeda57fb332f3a30668497bf3c4988d737c5bcc85c2be1305ac2f07e9bbdeb"
+}
