@@ -3,7 +3,12 @@
 > [!NOTE]
 > This service is currently **stable** but under development.
 
-A **REST API** written in **Rust** handling **safe currency transactions** for **Bit Casino** - a virtual gambling simulator. This app can be containerized using **Docker**.
+A **REST API** written in **Rust** handling **safe currency transactions** for **Bit Casino** - a virtual gambling simulator.
+
+### Features
+
+- Stores logs for all transactions, successful and unsuccessful.
+- Prevents negative balances and double spending using row-locking and transactions.
 
 ## How to use this repository
 
