@@ -14,7 +14,7 @@ A **REST API** written in **Rust** handling **safe currency transactions** for *
 
 This service is not very useful on its own. It relies upon the [**Player Microservice**](https://github.com/b1gd3vd0g/bit-casino-player-ms) and a **PostgreSQL** database
 
-To test this API alongside the whole environment, you can follow the instructions in the [Infrastructure](https://github.com/b1gd3vd0g/bit-casino-infra) to test all services locally using **Docker Compose**.
+To test this API alongside the whole environment, you can follow the instructions in the [Infrastructure](https://github.com/b1gd3vd0g/bit-casino-infra) repository to test all services locally using **Docker Compose**.
 
 You can then interact via the frontend at `localhost:60000` or call the integrated currency microservice directly at `localhost:60601`.
 
