@@ -32,7 +32,7 @@ pub async fn handle_transaction(
     Json(body): Json<RequestBody>,
 ) -> Response {
     let auth_failure_response = (
-        StatusCode::UNAUTHORIZED,
+        StatusCode::UNAUTHORIZED, //401
         Json(MessageResponse::token_auth_failure()),
     )
         .into_response();
@@ -62,16 +62,16 @@ pub async fn handle_transaction(
     match (updated_wallet, log_transaction) {
         (Ok(w), Ok(_)) => {
             (StatusCode::OK, Json(BalanceResponse { balance: w.balance })).into_response()
-        }
+        } //200
         (Err(_), Ok(_)) => (
-            StatusCode::CONFLICT,
+            StatusCode::CONFLICT, // 409
             Json(MessageResponse::new(
                 "Could not complete the transaction. Likely a balance failure.",
             )),
         )
             .into_response(),
         (Ok(_), Err(_)) => (
-            StatusCode::INTERNAL_SERVER_ERROR,
+            StatusCode::INTERNAL_SERVER_ERROR, //500
             Json(MessageResponse::new(
                 "Transaction completed but not logged! Unlikely and bad!",
             )),
