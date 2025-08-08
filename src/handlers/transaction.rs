@@ -47,7 +47,7 @@ pub async fn handle_transaction(
         Err(response) => return (StatusCode::UNAUTHORIZED, Json(response)).into_response(),
     };
 
-    let amount = BigDecimal::from(body.amount);
+    let amount = body.amount;
 
     let updated_wallet = update_wallet_balance(&pool, id, amount.clone()).await;
 
