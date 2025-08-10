@@ -4,7 +4,7 @@ use axum::{
     http::HeaderMap,
     response::{IntoResponse, Response},
 };
-use bigdecimal::BigDecimal;
+use bigdecimal::{BigDecimal, ToPrimitive};
 use reqwest::StatusCode;
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
@@ -23,7 +23,7 @@ pub struct RequestBody {
 
 #[derive(Serialize)]
 pub struct BalanceResponse {
-    pub balance: BigDecimal,
+    pub balance: u128,
 }
 
 pub async fn handle_transaction(
@@ -60,9 +60,13 @@ pub async fn handle_transaction(
     };
 
     match (updated_wallet, log_transaction) {
-        (Ok(w), Ok(_)) => {
-            (StatusCode::OK, Json(BalanceResponse { balance: w.balance })).into_response()
-        } //200
+        (Ok(w), Ok(_)) => (
+            StatusCode::OK,
+            Json(BalanceResponse {
+                balance: w.balance.to_u128().unwrap(),
+            }),
+        )
+            .into_response(), //200
         (Err(_), Ok(_)) => (
             StatusCode::CONFLICT, // 409
             Json(MessageResponse::new(
